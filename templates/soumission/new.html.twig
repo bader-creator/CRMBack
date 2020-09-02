@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Soumission{% endblock %}
+
+{% block body %}
+    <h1>Create new Soumission</h1>
+
+    {{ include('soumission/_form.html.twig') }}
+
+    <a href="{{ path('soumission_index') }}">back to list</a>
+{% endblock %}

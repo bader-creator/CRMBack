@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soumission index{% endblock %}
+
+{% block body %}
+    <h1>Soumission index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>DureeMission</th>
+                <th>DatePublication</th>
+                <th>DateSoumission</th>
+                <th>DateCreation</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>AdresseDepot</th>
+                <th>IsTuneps</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soumission in soumissions %}
+            <tr>
+                <td>{{ soumission.id }}</td>
+                <td>{{ soumission.title }}</td>
+                <td>{{ soumission.description }}</td>
+                <td>{{ soumission.dureeMission }}</td>
+                <td>{{ soumission.datePublication ? soumission.datePublication|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soumission.dateSoumission ? soumission.dateSoumission|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soumission.dateCreation ? soumission.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soumission.dateDebut ? soumission.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soumission.dateFin ? soumission.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soumission.adresseDepot }}</td>
+                <td>{{ soumission.isTuneps ? 'Yes' : 'No' }}</td>
+                <td>{{ soumission.path }}</td>
+                <td>
+                    <a href="{{ path('soumission_show', {'id': soumission.id}) }}">show</a>
+                    <a href="{{ path('soumission_edit', {'id': soumission.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('soumission_new') }}">Create new</a>
+{% endblock %}

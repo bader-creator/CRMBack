@@ -1,0 +1,33 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+login_check:
+  path:     api/login_check
+  methods: POST
+
+
+# config/routes.yml
+gesdinet_jwt_refresh_token:
+  path:       /api/token/refresh
+  controller: gesdinet.jwtrefreshtoken::refresh
+# ...
+
+register:
+  path: /register
+  controller: App\Controller\AuthController::register
+  methods: POST
+
+
+
+#contact_controller
+
+
+
+
+
+
+api:
+  path: /api
+  controller: App\Controller\AuthController::api
+

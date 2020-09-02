@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soum{% endblock %}
+
+{% block body %}
+    <h1>Soum</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ soum.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ soum.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ soum.description }}</td>
+            </tr>
+            <tr>
+                <th>DureeMission</th>
+                <td>{{ soum.dureeMission }}</td>
+            </tr>
+            <tr>
+                <th>DatePublication</th>
+                <td>{{ soum.datePublication ? soum.datePublication|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateSoumission</th>
+                <td>{{ soum.dateSoumission ? soum.dateSoumission|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ soum.dateCreation ? soum.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ soum.dateDebut ? soum.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ soum.dateFin ? soum.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AdresseDepot</th>
+                <td>{{ soum.adresseDepot }}</td>
+            </tr>
+            <tr>
+                <th>IsTuneps</th>
+                <td>{{ soum.isTuneps ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ soum.path }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('soum_index') }}">back to list</a>
+
+    <a href="{{ path('soum_edit', {'id': soum.id}) }}">edit</a>
+
+    {{ include('soum/_delete_form.html.twig') }}
+{% endblock %}

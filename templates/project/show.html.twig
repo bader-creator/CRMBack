@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+    <h1>Project</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ project.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ project.title }}</td>
+            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ project.intitule }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ project.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Interne</th>
+                <td>{{ project.interne ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project.description }}</td>
+            </tr>
+            <tr>
+                <th>DureeProjet</th>
+                <td>{{ project.dureeProjet }}</td>
+            </tr>
+            <tr>
+                <th>DatePublication</th>
+                <td>{{ project.datePublication ? project.datePublication|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateLimite</th>
+                <td>{{ project.dateLimite ? project.dateLimite|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ project.dateCreation ? project.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ project.dateDebut ? project.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ project.dateFin ? project.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ project.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ project.budget }}</td>
+            </tr>
+            <tr>
+                <th>Benifice_net</th>
+                <td>{{ project.benificeNet }}</td>
+            </tr>
+            <tr>
+                <th>Benifice_brut</th>
+                <td>{{ project.benificeBrut }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ project.path }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_index') }}">back to list</a>
+
+    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
+
+    {{ include('project/_delete_form.html.twig') }}
+{% endblock %}

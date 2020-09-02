@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+{% block body %}
+    <h1>Project index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Intitule</th>
+                <th>Libelle</th>
+                <th>Interne</th>
+                <th>Description</th>
+                <th>DureeProjet</th>
+                <th>DatePublication</th>
+                <th>DateLimite</th>
+                <th>DateCreation</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>Adresse</th>
+                <th>Budget</th>
+                <th>Benifice_net</th>
+                <th>Benifice_brut</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td>{{ project.id }}</td>
+                <td>{{ project.title }}</td>
+                <td>{{ project.intitule }}</td>
+                <td>{{ project.libelle }}</td>
+                <td>{{ project.interne ? 'Yes' : 'No' }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.dureeProjet }}</td>
+                <td>{{ project.datePublication ? project.datePublication|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.dateLimite ? project.dateLimite|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.dateCreation ? project.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.dateDebut ? project.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.dateFin ? project.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.adresse }}</td>
+                <td>{{ project.budget }}</td>
+                <td>{{ project.benificeNet }}</td>
+                <td>{{ project.benificeBrut }}</td>
+                <td>{{ project.path }}</td>
+                <td>
+                    <a href="{{ path('project_show', {'id': project.id}) }}">show</a>
+                    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_new') }}">Create new</a>
+{% endblock %}

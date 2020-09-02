@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soum index{% endblock %}
+
+{% block body %}
+    <h1>Soum index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>DureeMission</th>
+                <th>DatePublication</th>
+                <th>DateSoumission</th>
+                <th>DateCreation</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>AdresseDepot</th>
+                <th>IsTuneps</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soum in soums %}
+            <tr>
+                <td>{{ soum.id }}</td>
+                <td>{{ soum.title }}</td>
+                <td>{{ soum.description }}</td>
+                <td>{{ soum.dureeMission }}</td>
+                <td>{{ soum.datePublication ? soum.datePublication|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soum.dateSoumission ? soum.dateSoumission|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soum.dateCreation ? soum.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soum.dateDebut ? soum.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soum.dateFin ? soum.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ soum.adresseDepot }}</td>
+                <td>{{ soum.isTuneps ? 'Yes' : 'No' }}</td>
+                <td>{{ soum.path }}</td>
+                <td>
+                    <a href="{{ path('soum_show', {'id': soum.id}) }}">show</a>
+                    <a href="{{ path('soum_edit', {'id': soum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('soum_new') }}">Create new</a>
+{% endblock %}

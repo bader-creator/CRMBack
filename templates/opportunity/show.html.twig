@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Opportunity{% endblock %}
+
+{% block body %}
+    <h1>Opportunity</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ opportunity.id }}</td>
+            </tr>
+            <tr>
+                <th>Cprospect</th>
+                <td>{{ opportunity.cprospect }}</td>
+            </tr>
+            <tr>
+                <th>Nomaffaire</th>
+                <td>{{ opportunity.nomaffaire }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ opportunity.source }}</td>
+            </tr>
+            <tr>
+                <th>Dateecheance</th>
+                <td>{{ opportunity.dateecheance ? opportunity.dateecheance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ opportunity.montant }}</td>
+            </tr>
+            <tr>
+                <th>Devise</th>
+                <td>{{ opportunity.devise }}</td>
+            </tr>
+            <tr>
+                <th>Etape</th>
+                <td>{{ opportunity.etape }}</td>
+            </tr>
+            <tr>
+                <th>Proba</th>
+                <td>{{ opportunity.proba }}</td>
+            </tr>
+            <tr>
+                <th>Brief</th>
+                <td>{{ opportunity.brief }}</td>
+            </tr>
+            <tr>
+                <th>Societe</th>
+                <td>{{ opportunity.societe }}</td>
+            </tr>
+            <tr>
+                <th>Archive</th>
+                <td>{{ opportunity.archive }}</td>
+            </tr>
+            <tr>
+                <th>Idref</th>
+                <td>{{ opportunity.idref }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('opportunity_index') }}">back to list</a>
+
+    <a href="{{ path('opportunity_edit', {'id': opportunity.id}) }}">edit</a>
+
+    {{ include('opportunity/_delete_form.html.twig') }}
+{% endblock %}
